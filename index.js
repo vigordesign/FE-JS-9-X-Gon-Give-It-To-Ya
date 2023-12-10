@@ -191,9 +191,10 @@ function getFeedHtml(){
             // OH I think it happens becuase the tweet is still the old tweet? The original tweet buttons break after. so it's like it's not it's own tweet still!
         // This is working now! But I think it needs to be more specific to the new retweets code that I've added!
 
-        let retweetDivHtml = ''
+        let retweetDivHtml = ``
+        //console.log(tweetsData[0])
         if(tweet.replies.length > 0){
-            tweet.replies.forEach(function(retweetD){
+            tweet.replies.forEach(function(retweetD){ // replace forEach with sometnhing else. It only needs to be one! Do I need to iterate through the array or just grab the first one! This foreach is insdie of another for each!
                 retweetDivHtml+=`
                     <div class="tweet-inner">
                         <img src="${retweetD.profilePic}" class="profile-pic">
@@ -212,8 +213,7 @@ function getFeedHtml(){
         feedHtml += `
             <div class="tweet">
                 <div class="hidden" id="retweet-div-${tweet.uuid}">
-                
-                    <div class="tweet-inner">
+                    <div class="retweet">
                         <img src="images/dog.jpg" class="profile-pic">
                         <div>
                             <p class="handle">@GrandChamp</p>

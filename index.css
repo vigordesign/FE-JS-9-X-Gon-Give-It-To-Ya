@@ -111,6 +111,20 @@ button{
     gap: 20px;
 }
 
+.rtInner {
+    margin: 0 0 20px 0px;
+    /* border: #484848 1px solid; */
+    /* padding: 10px; */
+}
+
+.retweet {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    border-bottom: #484848 1px solid;
+    margin-bottom: 20px;
+}
+
 .tweet-details{
     display: flex;
     font-size: 13px;
@@ -168,12 +182,6 @@ button{
 
 .fa-comment-dots{
     font-size: 13px;
-}
-
-.rtInner {
-    margin-left: 30px;
-    border: #484848 1px solid;
-    padding: 10px;
 }
 
 /* images */
