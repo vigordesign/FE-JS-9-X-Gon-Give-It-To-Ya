@@ -115,14 +115,21 @@ function handleRetweetClick(tweetId){
     ////////////////////////////////////////
     // THIS PART IS BREAKING IT!
     tweetsData.unshift({
-        handle: `@GrandChamp`, //this part isn't coming ghrough either! It shows up as the original tweet handle!
+        handle: `@GrandChamp`, //this part isn't coming through either! It shows up as the original tweet handle!
         profilePic: `images/dog.jpg`,
         tweetText: tweetId.tweetText + 'honk', // needs to be text from the tweet of the clicked item!
         uuid: uuidv4()
     })
+    console.log(tweetsData)
+    // it IS coming through as a new tweet with a new ID! I need to display the new one! and have it display that because it's not displaying honk either! hahah! It's displaying the original tweet! Interesting!
+    /// OHHHH "undefinedhonk" is coming through for the tweetText!!! YAY TESTING! 
+
+    // it can't find the replies anymore on line 171! if I comment that out it can't do the foreach
+
     ////////////////////////////////////////
     render()
 }
+//console.log(handleRetweetClick())
 
 function handleTweetBtnClick(){
     const tweetInput = document.getElementById('tweet-input')
@@ -182,23 +189,22 @@ function getFeedHtml(){
 
         // it doesn't matter if this section below is here at all? hahaha! Why?
             // OH I think it happens becuase the tweet is still the old tweet? The original tweet buttons break after. so it's like it's not it's own tweet still!
+        // This is working now! But I think it needs to be more specific to the new retweets code that I've added!
 
-        // let retweetDivHtml = ''
-        // if(tweet.replies.length > 0){
-        //     tweet.replies.forEach(function(retweetD){
-        //         retweetDivHtml+=`
-        //             <div class="tweet-reply">
-        //                 <div class="tweet-inner">
-        //                     <img src="${retweetD.profilePic}" class="profile-pic">
-        //                         <div>
-        //                             <p class="handle">honk from retweetDivHtml!${retweetD.handle}</p>
-        //                             <p class="tweet-text">${retweetD.tweetText}</p>
-        //                         </div>
-        //                     </div>
-        //             </div>
-        //             `
-        //     })
-        // }
+        let retweetDivHtml = ''
+        if(tweet.replies.length > 0){
+            tweet.replies.forEach(function(retweetD){
+                retweetDivHtml+=`
+                    <div class="tweet-inner">
+                        <img src="${retweetD.profilePic}" class="profile-pic">
+                            <div>
+                                <p class="handle">${retweetD.handle}</p>
+                                <p class="tweet-text">${retweetD.tweetText}</p>
+                            </div>
+                        </div>
+                    `
+            })
+        }
 
 
         
@@ -206,14 +212,13 @@ function getFeedHtml(){
         feedHtml += `
             <div class="tweet">
                 <div class="hidden" id="retweet-div-${tweet.uuid}">
+                
                     <div class="tweet-inner">
                         <img src="images/dog.jpg" class="profile-pic">
                         <div>
                             <p class="handle">@GrandChamp</p>
                             <div class="rtInner">
-                            <img src="${tweet.profilePic}" class="profile-pic">
-                                <p class="handle">${tweet.handle}</p>
-                                <p class="tweet-text">${tweet.tweetText}</p>
+                                <p class="tweet-text">${retweetDivHtml}</p>
                             </div>
                         </div>
                     </div>
