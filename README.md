@@ -1,3 +1,3 @@
-# coc524a08b125eb6e254997fb
+# X Gon' Give It To Ya
 
-Working on this Twitter clone from a Scrimba course! It's a work in progress for now! 
+Working on this rebranded Twitter clone from a Scrimba course! It's a work in progress for now! 
