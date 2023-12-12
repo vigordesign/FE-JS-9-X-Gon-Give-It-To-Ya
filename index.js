@@ -170,7 +170,7 @@ function getFeedHtml(){
         }
         
         let repliesHtml = ''
-        if(tweet.replies.length > 0){
+        if(tweet.replies) {
             tweet.replies.forEach(function(reply){
                 repliesHtml+=`
                     <div class="tweet-reply">
@@ -193,7 +193,7 @@ function getFeedHtml(){
 
         let retweetDivHtml = ``
         //console.log(tweetsData[0])
-        if(tweet.replies.length > 0){
+        if(tweet.replies) {
             tweet.replies.forEach(function(retweetD){ // replace forEach with sometnhing else. It only needs to be one! Do I need to iterate through the array or just grab the first one! This foreach is insdie of another for each!
                 retweetDivHtml+=`
                     <div class="tweet-inner">
@@ -231,7 +231,7 @@ function getFeedHtml(){
                         <div class="tweet-details">
                             <button class="tweet-detail" data-reply="${tweet.uuid}">
                                 <i class="fa-regular fa-comment-dots" data-reply="${tweet.uuid}"></i>
-                                ${tweet.replies.length}
+                                ${tweet.replies ? tweet.replies.length : '0'}
                             </button>
                             <button class="tweet-detail" data-like="${tweet.uuid}">
                                 <span class="fa-solid fa-heart ${likeIconClass}" data-like="${tweet.uuid}">
